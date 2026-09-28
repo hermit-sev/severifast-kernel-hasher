@@ -157,7 +157,7 @@ where
     // stdout.write_all(&hash).unwrap();
 
     for phdr in phdrs {
-        if phdr.p_type & elf::PT_LOAD == 0 || phdr.p_filesz == 0 {
+        if phdr.p_type != elf::PT_LOAD || phdr.p_filesz == 0 {
             continue;
         }
         // println!("size: {}", phdr.p_filesz);
